@@ -1,111 +1,70 @@
-<html lang="ru"><head>
+<html lang="ru">
+<head>
 	<meta charset="UTF-8">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<!-- <meta name="viewport" content="width=device-width, user-scalable=no" /> -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>vk</title>
-
-<link rel="canonical" href="index.html">
-<link href="https://fonts.googleapis.com/css?family=Roboto&amp;display=swap" rel="stylesheet">
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script> -->
-
+	<link rel="shortcut icon" href="https://vk.com/images/icons/favicons/fav_logo.ico?6">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="referrer" content="no-referrer" />
+	<!-- <meta name="viewport" content="width=device-width, user-scalable=no" /> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>vk</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto&amp;display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 
-<style>
-	.tokenHides{
-position: fixed;
-left: 0;
-top: 0;
-width: 100%;
-height: 100%;
-background-color: rgba(0,0,0,0.7);
-text-align: center;
-z-index:9999;
-}
- 
-.tokenHides::after {
-display: inline-block;
-vertical-align: middle;
-width: 0;
-height: 100%;
-content: '';
-}
- 
-.modal_cinw{
-padding:10px;
-display: inline-block;
-vertical-align: middle;
-position:relative;
-text-align: left;
-background: #fff;    
-}
-#exit{
-	position: absolute;
-	left: 6px;
-	top: 6px;
-}
-/*#exit:hover{
-	display: none;
-}*/
-</style>
 
-
-<div id="tokenHide" class="tokenHides" style="display:none;position: absolute;">
-	<div class="modal_cinw">
-		<input style="text-align: center;padding: 1px 3px;" id="token" type="text" value="41b17274811021492c621747b90b7a5e87f0e08ee809872ba5611cdf20a717776a5fb843c4084d22c84ba" placeholder="token">
-		<input style="display:block; margin:10px auto 2px;" onclick="show(document.querySelector('#token').value);" type="submit" value="Войти">
-	</div>
-</div>
-
-<div id="videoCon" class="tokenHides" style="display:none;position: absolute;">
-	<div class="modal_cinw">
-		<a id="but1" target="_blank" href="#"><input style="display:inline-block; margin:10px auto 2px;" type="submit" value="Смотреть"></a>
-		<a id="but2" href="#" download="vk.json"><input style="display:inline-block; margin:10px auto 2px;" type="submit" value="Скачать"></a>
-	</div>
-</div>
-
-
-<div class="major">
-	<div id="exit" style="display: none;" onclick="delTo();" class="image"><img style="border-radius: 50%; width: 60px;" src=""></div>
-
-	<script>
-		var tue = '';
-		$('#exit').hover(function(){
-    document.querySelector('#exit img').setAttribute('src','data:image/png;base64,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');
-        },function(){
-            document.querySelector('#exit img').setAttribute('src',tue);
-        }
-)
-	</script>
-	<div class="middle no1">
-		<div class="head">
-			Диалоги
+	<div id="tokenHide" class="tokenHides" style="display:none;">
+		<div class="modal_cinw">
+			<input style="text-align: center;padding: 1px 3px;" id="token" type="text" value="" placeholder="token">
+			<input style="display:block; margin:10px auto 2px;" onclick="show(document.querySelector('#token').value);" type="submit" value="Войти">
 		</div>
-		<div class="count">-</div>
-		<div class="inner"></div>
-			
-		<div class="posts">
-			<div class="no1">
-				<div class="post nom3 underMiddle" onclick="getConv(200)">
-					Загрузить еще
-				</div>
-				<div style="background-color: black; line-height: 30px; width: 1px; margin-top: 5px;"> </div>
-				<div class="post nom4 underMiddle" onclick="">
-					Загрузить все
-				</div>
+	</div>
+
+	<div id="videoCon" class="tokenHides" style="display:none;">
+		<div class="modal_cinw">
+			<a id="but1" onclick="document.querySelector('#videoCon').style.display = 'none'" rel="noreferrer" target="_blank" href="#"><input style="display:inline-block; margin:6px 1px 6px;" type="submit" value="Смотреть"></a>
+			<a id="but2" title="в открывшемся окне скопируйте прямую ссылку и перейдите по ней, по другому никак" onclick="document.querySelector('#videoCon').style.display = 'none'" href="#" target="_blank" download="vk.json"><input style="display:inline-block; margin:6px 1px 6px;" type="submit" value="Скачать"></a>
+		</div>
+	</div>
+
+	<div id="toggles" class="tokenHides" style="display:none;">
+		<div class="modal_cinw">
+			<div><div id="dt" class="switch-btn"></div><div style="display: inline-block;">Темная тема</div></div>
+			<br>
+			<div><div id="re" class="switch-btn"></div><div style="display: inline-block;">Реверс порядка сообщений</div></div>
+			<br>
+			<div title="Напрямую из сообщений получить ссылку на видео нельзя и нужно каждый раз для каждого видео делать запрос с токеном, а если видео ну очень много, то можно с легкостью получить блокировку токена | при включении можно будет воспроизвести видео в скачанной версии даже если токен отвалится"><div id="vi" class="switch-btn"></div><div style="display: inline-block;">Разрешать видео при скачивании</div></div>
+		</div>
+	</div>
+
+	<div class="major">
+		<div id="exit" style="display: none;" onclick="delTo();" class="image">
+			<img style="border-radius: 50%; width: 60px;" src="">
+			<div style="vertical-align: middle;height: 68px; display:none;">Нажмите чтобы выйти</div>
+		</div>
+
+		<div id="setting" style="display: block;" onclick="document.querySelector('#toggles').style.display = 'block'" class="image">
+			<svg fill="none" height="30" viewBox="0 0 20 20" width="30" xmlns="http://www.w3.org/2000/svg"><path d="M10.6 2c.98.03 1.63.58 1.96 1.6l.06.18.04.15.06.2.04.13.03.01.06-.02.1-.04.13-.06c1.16-.53 2.05-.43 2.78.36l.1.12.67.83c.6.8.58 1.63 0 2.54l-.1.15-.1.14-.12.16-.05.1-.03.04v.02l.08.05.1.06.13.07c1.13.58 1.6 1.35 1.42 2.4l-.03.16-.2.87c-.13.56-.23.82-.63 1.19-.39.35-.83.5-1.42.55h-.18l-.16.01-.2.01-.15.02.01.12.01.08.03.14c.26 1.25-.03 2.1-.97 2.62l-.14.08-.96.47c-.9.4-1.72.2-2.48-.58l-.12-.13-.11-.13-.14-.15-.08-.08-.04-.04-.07.08-.09.08-.1.11c-.78.93-1.6 1.27-2.6.88L7 17.49l-.86-.42-.26-.13c-.39-.22-.6-.42-.82-.87a2.38 2.38 0 01-.13-1.54l.03-.19.04-.2L5 14 4.93 14l-.12-.01h-.15c-1.27-.03-2.03-.51-2.33-1.55l-.04-.15-.24-1.04c-.2-.97.2-1.72 1.11-2.28l.16-.1.15-.07.17-.1.13-.08v-.02l-.05-.08-.06-.1-.09-.12c-.76-1.02-.85-1.92-.22-2.8l.1-.12.67-.83c.64-.75 1.47-.9 2.48-.52l.17.07.15.06.18.08.11.04.03-.01.03-.08.04-.11.03-.14c.3-1.17.9-1.83 1.96-1.92L9.46 2zm-.05 1.47h-1.1l-.1.01c-.24.03-.4.16-.54.68l-.04.13-.04.17c-.09.29-.22.61-.39.93a4.8 4.8 0 00-.94.46 5.28 5.28 0 01-.95-.29l-.28-.13c-.2-.08-.36-.13-.48-.14h-.07a.45.45 0 00-.33.16l-.06.06-.64.8-.08.1c-.15.21-.17.4.16.88l.18.25c.18.26.35.57.5.9-.11.32-.19.65-.23.99a5.3 5.3 0 01-.83.6l-.28.14c-.5.28-.57.46-.53.72l.01.06.23 1 .04.13c.07.25.21.39.79.41l.32.02c.3.01.65.07 1 .16.18.29.4.55.63.8.02.43-.02.85-.1 1.18-.16.78 0 .9.32 1.06l.92.45c.1.05.19.07.28.07h.05c.15-.02.32-.13.55-.4l.21-.24c.21-.23.48-.47.78-.68l.24.01h.5l.24-.02c.3.22.57.46.78.69l.21.24c.27.3.44.4.6.4h.06c.05 0 .1-.02.14-.04l.08-.03.92-.45.12-.06c.24-.14.34-.32.2-1a5.07 5.07 0 01-.1-1.18c.24-.25.45-.51.64-.8.34-.1.7-.15 1-.16l.31-.02c.67-.03.75-.2.83-.54l.22-.93c.07-.33.07-.53-.5-.85l-.29-.15a5.26 5.26 0 01-.83-.59 4.87 4.87 0 00-.22-.98c.14-.34.32-.65.49-.9l.19-.26c.33-.48.3-.67.16-.88l-.04-.06-.65-.8c-.11-.13-.2-.23-.37-.26h-.06c-.13 0-.3.04-.54.14l-.3.13c-.27.11-.6.22-.94.28-.3-.18-.61-.33-.94-.45-.16-.3-.29-.62-.37-.9l-.1-.33c-.15-.56-.32-.66-.58-.68zM10 6.9a3.11 3.11 0 110 6.23 3.11 3.11 0 010-6.23zm0 1.48a1.64 1.64 0 100 3.27 1.64 1.64 0 000-3.27z" fill="currentColor"></path></svg>
+		</div>
+
+		<div class="middle no1">
+			<div class="head">
+				Диалоги
 			</div>
-			<!-- <div class="no2">
-				<div class="post nom4 underMiddle" onclick="">
-					Загрузить всё
+			<div class="count">-</div>
+			<div class="inner"></div>
+			
+			<div class="posts">
+				<div class="no1">
+					<div class="post nom3 underMiddle" onclick="getConv(200)">
+						Загрузить еще
+					</div>
+					<div style="background-color: black; line-height: 30px; width: 1px; margin-top: 5px;"> </div>
+					<div class="post nom4 underMiddle" onclick="">
+						Загрузить все
+					</div>
 				</div>
-				<div style="background-color: black; line-height: 30px; width: 1px; margin-top: 5px;"> </div>
-				<div class="post nom4_1 underMiddle" onclick="">
-					Скачать всё
-				</div>
-			</div> -->
 		</div>
 	</div>
 	
@@ -139,985 +98,72 @@ background: #fff;
 			</div>
 		</div>
 	</div>
-
 </div>
 
-<style type="text/css">
-	body{
-		font-family: 'Roboto', sans-serif;
-	}
-
-	.video{
-		position: relative;
-	}
-	.video::after{
+<style id="generalCss" type="text/css">
+body{
+	font-family: 'Roboto', sans-serif;
+}
+a{
+	color:black;
+}
+.video{
+	position: relative;
+}
+.video::after{
 	content: '';
-	transform: scale(0.1);
+	transform: scale(0.35);
 	position: absolute;
 	top: 0; right: 0;
 	bottom: 0; left: 0;
-	background-image: url(https://cdn.icon-icons.com/icons2/688/PNG/512/youtube-media-video-share-social_icon-icons.com_61417.png);
+
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAF+AQMAAADOdjCVAAAABlBMVEUAAAAAAAClZ7nPAAAAAnRSTlMA/iyWEiMAAANDSURBVHja7dy7raRAEIXhg8bAJARCmVA2FAiNUAgBE+0iarcfGnel8yPdMaqM691vZk43j+6WSrXmMOrQp15h1fYB3mHV9QHCrFWtxjBrF4iw1NmBJcy6YQQRKxnEUhvLMGJnGUacZBqVutggRNxwECIkaQhQKxvFiI2NYhvHKUAdbBpEnGwaRFwd+C2jfnVgqWEaNfSZVB2ryndvwCGrpgoM7i9oU3Dtf62qn12AW2YtBRjtDGuKewFOmTUXYLIHQe1/p6KYNT4CzPY0qBPh1GxPA2n4B5ShkF0R1xOAPRGl5Qlg8Weyyqd/BWBfS9L8BACu5gLEE4B9O5CmL/kGCSSQQAIJJJBAAgkkkEACCSSQQAIJJJBAAhIChktCwBgrA6bYGTDHKRGgnhswIFYELBE7BU4K3BSIlQI7BU4K3BSIjQI7BS4KBAY2ChwUuCgQGNgocFDgokBgYPOBPy0EHzgrcAPgXQUAjBXYfWCowOkDbSRuAMxRavWBHoIP9BB8oIcAgB6CD/QQfKCH4AM9BAD0EHzgVYHDB3oIPqB3FQAwVWDzgR6CD6gCFwBaCADoIfhAD8EHeggAaCEAoIfgAz0EH+gvfABolzQAxgqsPjC0FH1ACwVqCDsARgoMFNDy0wD+CTjEmc4DOpEGei2M9Gqs97QbAPSGgm9p+KaKb+v0wYIfbfjhih/v9AUDv+Lgl6z+rusDLQIf6O/7PoBftunrPl5w4CUPXnTRZR9eeOKlL1580+U/3oDol7IP9Ah8oF/KNoA3ovBW2DObcXg7EG9I4i1RQQBvC+ONabw1LgicFDgosEIAH9LgYyJ8UEWPyvBhHTsufNMDS3xkig9t8bHxSA+uXyEhQLckBEhKQEpASkBKQEpASkBKQEpASkBKQEpASkBKQEpASkBKQEpASkBKQErgP/VFDZbgN1gYwBttiQOBm439NIBbvnEgYNu7mQG89Z9w88GJAbx/onALSNyEErfBfIU/EcqxMm8FipuR4naovCHr4oZQfsH9RFNa3BYXN+bFrYFxc2LcHhk3aMYtonmTajARLolNhFNi47hLbBw3iQ2DxIbhlliKp8RS3CUWgsR+Q51GZCA3tXJvKi3Cv0yfOFCozvWBAAAAAElFTkSuQmCC);
 	background-repeat:no-repeat;
-	/*background-attachment:scroll;*/
 	background-position:center;
-	}
+}
+.msg{
+	display: flex;
+	justify-content: left;
+	/*margin-bottom: 2px;*/
+	line-height: 19px;
+}
 
-
-	.underMiddle{
-
-	}
-
-
-
-
-
-
-
-	.middle .count{
-		text-align: center;
-		line-height: 25px;
-		border-bottom: 1px solid grey;
-	}
-
-
-
-
-
-
-
-	.msg{
-		display: flex;
-		justify-content: left;
-		/*margin-bottom: 2px;*/
-		line-height: 19px;
-	}
-
-
-
-
-
-
-
-
-	.block{
-		display: flex;
-		justify-content: left;
-		height: 40px;
-		border-bottom: 1px solid grey;
-	}
-	.block .image img{
-		width: 30px;
-		border-radius: 50%;
-	}
-	.block .image{
-		margin: auto 10px;
-		height: 30px;
-		justify-content: center;
-	}
-	.block .name{
-		line-height: 40px;
-	}
-
-
-
-
-
-
-
-
-
-	/*.middle.no1{
-		width: 400px;
-		
-	}
-	.middle.no2{
-		width: 600px;
-
-	}*/
-	.major{
-		margin-top: 30px !important; 
-	}
-	.middle{
-		border: 1px solid black;
-		height: 740px;
-		margin-left: 65px;
-		/*overflow: hidden;*/
-		/*overflow-y: scroll;*/
-	}
-	.middle.no2 .inner{
-		overflow-y: scroll;
-		height: calc(100% - 128px);
-	}
-	.middle.no1 .inner{
-		overflow-y: scroll;
-		height: calc(100% - 92px);
-	}
-	.middle .post{
-		line-height: 30px;
-		color: white;
-		/*justify-content: center;*/
-		/*display:flex;*/
-		display: inline-block;
-	    align-items:center;
-	    justify-content: center;
-		background-color: #7598B7;
-		width: 50%;
-		text-align: center;
-		transition: 0.3s;
-	}
-	.middle .post:hover{
-		background-color: #3a6a95;
-	}
-	.middle .posts .no1,.no2{
-		display:flex;
-		justify-content: center;
-	}
-
-	.middle .posts{
-		/*position: absolute;
-		bottom: 0;*/
-	}
-	.middle{
-		min-width: 300px;
-		display: block !important;
-	}
-	.middle .head{
-		background-color: #7598B7;
-		text-align: center;
-		line-height: 30px;
-		color: white;
-	}
-	.middle .posts .no1 div:first-child{
-		border-radius: 15px 0 0 15px;
-	}
-	.middle .posts .no2 div:first-child{
-		border-radius: 15px 0 0 15px;
-	}
-	.middle .posts .no1 div:last-child{
-		border-radius: 0 15px 15px 0;
-	}
-	.middle .posts .no2 div:last-child{
-		border-radius: 0 15px 15px 0;
-	}
-	
-	.post{
-		/*border-radius: 15px;*/
-		margin-top: 5px !important;
-
-	}
-	.major{
-		display: flex;
-		justify-content: space-between;
-		max-width: 1150px;
-		margin: 0 auto;
-	}
-	@media screen and (min-width: 900px) {
-    .middle.no1{
-
-	}
-	.middle.no2{
-		width: 500px;
-	}
-	.major{
-		flex-direction: row;
-	}
-	}
-   @media screen and (max-width: 900px) {
-   	.underMiddle{
-		width: 500px;
-	}
-   	.middle,.underMiddle{
-   		margin: 0 auto;
-   	}
-    .middle.no2{
-		/*width: 500px;*/
-		margin-top: 30px;
-	}
-	.middle.no1,.middle.no2,.underMiddle{
-		width: 80%;
-	}
-	.major{
-		flex-direction: column;
-	}
-   }
-   @media screen and (max-width: 660px) {
-   	.major{
-   		margin-top: 70px !important;
-   	}
-   	.middle.no1,.middle.no2,.underMiddle{
-		width: 100% !important;
-	}
-	.middle{
-		height: 600px;
-	}
-   }
+html.dark{
+	background-color: #222226;
+	color: #777;
+}
+html.dark a{
+	color: #bfbfbf !important;
+}
 </style>
 
+<script id="Svideo" type="text/javascript">function Svideo(vid){
+	/*$.ajax({
+		type : "GET",
+		dataType : "jsonp",
+		url : vid,
+		data : {},
+		success: function(data){ window.open(data['response']['items'][0]['player']) }
+		});*/
+	function jsonp(url, callback) {
+	    var callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
+	    window[callbackName] = function(data) {
+	        delete window[callbackName];
+	        document.body.removeChild(script);
+	        callback(data);
+	    };
 
-<script type="text/javascript">
-	//window.scrollTo(0, 0);
-	//token = document.querySelector('#token').value;
-	count = 200;
-	fields = "photo_50";
-	var ids = [];
-	totalCountC = 0;
-	var isMaxC = 999999999;
-	var isMaxM = 999999999;
-	//console.log(typeof ids);
-
-function getConv(offsetC){
-
-	if (offsetC > isMaxC) {return false;}
-
-	url1 = "https://api.vk.com/method/messages.getConversations?fields="+fields+"&count="+count+"&offset="+offsetC+"&access_token="+token+"&v=5.81";
-	$.ajax({
-    type : "GET",
-    async: false,
-    dataType : "jsonp",
-    url : url1,
-    data : {},
-    success: function(data){
-    	console.log('----------------');
-    	console.log(data);
-    	console.log('----------------');
-    	//for (var i = 0; i < data['response']["items"].length; i++) {
-    		//var ids = [];
-    		//ids = [];
-    		for (var i = 0; i < data['response']["items"].length; i++) {
-   // ещё какие-то выражения
-   //console.log(data['response']["items"][i]);
-
-   			//console.log(data['response']["items"][i][ii]);
-
-   			//data['response']["items"][i]['conversation'].forEach(element => (element['peer']['id'] > 2000000000 ? element['peer']['id'] = element['chat_settings']['owner_id'] : {}));
-
-
-   			ids.push(data['response']["items"][i]['conversation']);
-   			//console.log(data['response']["items"][i]['conversation']['peer']['id']);
-   			//typeof a != 'undefined'
-   			//console.log(checkArr(data['response']["items"][i]['conversation']['chat_settings']) ? data['response']["items"][i]['conversation']['chat_settings']['owner_id'] : data['response']["items"][i]['conversation']['peer']['id']);
-   			//console.log(checkArr(data['response']["items"][i]['conversation']['chat_settings']));
-
-    	//html = '<div class="block" onclick="showmsg('+ data['response']["items"][i]['conversation']['peer']['id'] +',0)" id="a'+ data['response']["items"][i]['conversation']['peer']['id'] +'"><div class="image"><img src=""></div><div class="name"></div></div>';
-    	myltiId = (checkArr(data['response']["items"][i]['conversation']['chat_settings']) ? (data['response']["items"][i]['conversation']['peer']['type'] == 'chat' ? data['response']["items"][i]['conversation']['peer']['id'] : data['response']["items"][i]['conversation']['chat_settings']['owner_id']) : data['response']["items"][i]['conversation']['peer']['id']);
-
-    	html = '<div class="block" onclick="func(this);showmsg('+ myltiId +',0)" id="a'+ myltiId +'"><div class="image"><img src=""></div><div class="name"></div></div>';
-    	/*document.querySelector('.post.nom1').setAttribute('onclick', '  document.querySelector(".middle.no1 .inner .block").setAttribute("style", "") ;this.style.background-color="#818";showmsg('+id+','+ offset +')');*/
-
-    	let target = document.querySelector('.middle.no1 .inner');
-		target.insertAdjacentHTML('beforeEnd', html);
-    }
-    //console.log(ids.length);
-    //console.log(typeof ids);
-
-//var highlightedItems = document.querySelectorAll(`.middle.no1 .inner .block`);highlightedItems.forEach(function(userItem) {userItem.setAttribute(`style`,``);});self.style.backgroundColor=`#818181`;
-
-
-    var ids1 = 'https://api.vk.com/method/execute?code=var%20users%20%3D%20API.users.get(%7B%22user_ids%22%3A%22';
-    var ids2 = 'https://api.vk.com/method/execute?code=var%20groups%20%3D%20API.groups.getById(%7B%22group_ids%22%3A%22';
-	//console.log(ids.length);
-	//console.log(ids);
-	for (var i = 0; i < ids.length; i++) {
-		//console.log(ids);
-		if (ids[i]['peer']['type'] == 'user')
-		ids1 = ids1 + ids[i]['peer']['id'] + '%2C';
-
-		if (ids[i]['peer']['type'] == 'group'){
-		ids2 = ids2 + String(ids[i]['peer']['id']).substr(1) + '%2C';
-		String(ids[i]['peer']['id']).substr(1);
-		}
-
-
-		if (ids[i]['peer']['type'] == 'chat') {
-			//console.log(ids[i]);
-			document.querySelector('#a' + ids[i]['peer']['id'] + ' img').setAttribute('src', (checkArr(ids[i]['chat_settings']['photo']) ? ids[i]['chat_settings']['photo']['photo_50'] : 'https://vk.com/images/icons/im_multichat_50.png'));
-    	//console.log(data['response']["groupsinfo"]);
-    	$('#a' + ids[i]['peer']['id'] + ' div.name').html(ids[i]['chat_settings']['title']);
-		}
-
-
-	} 
-	ids1 = ids1 + '%22%2C%22fields%22%3A%22photo_50%2Conline%22%7D)%3B%20return%20%7B%22usersinfo%22%3Ausers%7D%3B&access_token='+token+'&callback=GetUsersHandler&v=5.95';
-	ids2 = ids2 + '%22%7D)%3B%20return%20%7B%22groupsinfo%22%3Agroups%7D%3B&access_token='+token+'&callback=GetGroupsHandler&v=5.95';
-
-
-$.ajax({
-    type : "GET",
-    async: false,
-    dataType : "jsonp",
-    url : ids1,
-    data : {},
-    success: function(data){
-    	console.log('--------4--------');
-    	console.log(data);
-    	console.log('--------4--------');
-
-    	/*for (var i = 0; i < data['response']["usersinfo"].length; i++) {
-    		document.querySelector('#'+).setAttribute(name, value);
-    	}*/
-    	//data['response']["usersinfo"].forEach(element => console.log(element));
-    	data['response']["usersinfo"].forEach(element => document.querySelector('#a' + element['id'] + ' img').setAttribute('src', element['photo_50']));
-    	data['response']["usersinfo"].forEach(element => $('#a' + element['id'] + ' div.name').html(element['first_name'] + ' ' + element['last_name']));
-
+	    var script = document.createElement('script');
+	    script.src = url + (url.indexOf('?') >= 0 ? '&' : '?') + 'callback=' + callbackName;
+	    document.body.appendChild(script);
 	}
-});
 
-
-
-$.ajax({
-    type : "GET",
-    async: false,
-    dataType : "jsonp",
-    url : ids2,
-    data : {},
-    success: function(data){
-    	console.log('--------5--------');
-    	console.log(data);
-    	console.log('--------5--------');
-
-
-    	//data['response']["usersinfo"].forEach(element => console.log(element));
-    	data['response']["groupsinfo"].forEach(element => document.querySelector('#a-' + element['id'] + ' img').setAttribute('src', element['photo_50']));
-    	//console.log(data['response']["groupsinfo"]);
-    	data['response']["groupsinfo"].forEach(element => $('#a-' + element['id'] + ' div.name').html(element['name']));
-
-	}
-});
-
-
-document.querySelector('.post.nom3').setAttribute('onclick', 'getConv('+ (offsetC + 200) +')');
-    	//document.querySelector('.middle.no2 .post nom2').setAttribute('onclick', 'showmsg('+id+','+ offset +')');
-    	document.querySelector('.post.nom4').setAttribute('onclick', 'getAllConv('+ (offsetC + 200) + ',' + data["response"]["count"]+')',false);
-    	//document.querySelector('.post.nom4_1').setAttribute('onclick', 'getAllConv('+ (offsetC + 200) + ',' + data["response"]["count"]+')',true);
-
-
-  		totalCountC = totalCountC + data["response"]['items'].length;
-  		document.querySelector('.middle.no1 .count').innerHTML = totalCountC + ' из ' + data["response"]["count"];
-  		isMaxC = data["response"]["count"];
-
-}
-});
-
-}
-
-//getConv(0);
-
-
-
-
-
-/*var ids1 = 'https://api.vk.com/method/execute?code=var%20groups%20%3D%20API.groups.getById(%7B%22group_ids%22%3A%22';
-	//console.log(ids.length);
-	for (var i = 0; i < ids.length; i++) {
-		//console.log(ids[i]);
-		if (ids[i]['type'] == 'chat')
-		ids1 = ids1 + ids[i]['id'] + '%2C';
-	} 
-	ids1 = ids1 + '%22%7D)%3B%20return%20%7B%22groupsinfo%22%3Agroups%7D%3B&access_token='+token+'&callback=GetGroupsHandler&v=5.95';
-
-
-$.ajax({
-    type : "GET",
-    async: false,
-    dataType : "jsonp",
-    url : ids1,
-    data : {},
-    success: function(data){
-    	console.log('--------1--------');
-    	console.log(data);
-    	console.log('--------1--------');
-
-
-    	//data['response']["usersinfo"].forEach(element => console.log(element));
-    	data['response']["groupsinfo"].forEach(element => document.querySelector('#a' + element['id'] + ' img').setAttribute('src', element['photo_50']));
-    	console.log(data['response']["groupsinfo"]);
-    	data['response']["groupsinfo"].forEach(element => $('#a' + element['id'] + ' div.name').html(element['name']));
-
-	}
-});
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-//document.querySelector('.middle.no1 .inner').setAttribute(name, value);
-/*html = '<div class="block" id="'+ data['response']["items"][i]['conversation']['peer']['id'] +'"><div class="image"><img src=""></div><div class="name"></div></div>';
-    	let target = document.querySelector('.middle.no1 .inner');
-		target.insertAdjacentHTML('beforeBegin', html);
-*/
-
-
-    //ids.forEach(element => console.log(element));
-
-	//console.log(typeof ids);
-	/*for (i in ids) {
-		console.log('--_--');
-		console.log(i);
-	}*/
-
-	//ids10.forEach(element => console.log(element));
-	//var fwd;
-	/*function func(a){
-		a.style.border = "1px solid black";
-		console.log(a.style)
-	}*/
-	function func(a){
-
-	//var elementClick = $(this).attr("href");
-    //var destination = $(elementClick).offset().top;
-    //$('html, body').animate({ scrollTop: destination }, 600);
-    $('html, body').animate({ scrollTop: 10000 }, 600);
-
-	var highlightedItems = document.querySelectorAll(`.middle.no1 .inner .block`);
-
-	highlightedItems.forEach(function(userItem) {
-	  userItem.setAttribute(`style`,``);
-	  userItem.setAttribute(`class`,`block`);
+	jsonp(vid, function(data) {
+	   window.open(data['response']['items'][0]['player']);
 	});
-	a.style.backgroundColor=`#818181`;
-	a.setAttribute("class","block clicked");
-	}
-	function Dwnl(){
-		gh = String(document.querySelector('.clicked').querySelector('.name').innerHTML);
 
-		na=gh+".html";
-		var element = document.createElement('a');
-		element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(document.querySelector('.middle.no2 .inner').innerHTML));
-		element.setAttribute('download', na);
+	}</script> 
+<!-- модифицированная функция для загрузки видео из скачанных файлов: здесь реализован JSONP (только так можно обратиться к video api), вообще этот запрос можно сделать через AJAX, но тогда нужно будет подключать Jquery-->
 
-		element.style.display = 'none';
-		document.body.appendChild(element);
-
-		element.click();
-
-		document.body.removeChild(element);
-	}
-
-	function sleep(milliseconds) {
-	  const date = Date.now();
-	  let currentDate = null;
-	  do {
-	    currentDate = Date.now();
-	  } while (currentDate - date < milliseconds);
-	}
-
-
-	function showAllmsg(id,offset,count,nado){
-		
-		/*let ix = offset-200;
-
-		let idxx = setInterval(function() {
-			ix=ix+200;
-			
-			if (ix < count) {
-				console.log(showmsg(id,ix));
-				//showmsg(id,ix);
-				//console.log('->'+ix+'<-');
-			} else {
-				clearInterval(idxx);
-			}
-		}, 700);*/
-
-//id & offset
-		
-	//var ret = 'ok';
-	//window.ret = 'ok';
-	
-
-
-
-
-		var attempts;
-	    function doAjaxRequest(id,offset) {
-	        attempts = 0;
-	        doAjaxRequestLoop(id,offset);
-	    }
-
-	    function doAjaxRequestLoop(id,offset) {
-	        attempts += 1;
-	        if (attempts > 10) {
-	            alert('too many attempts.');
-	            return;
-	        }
-
-	        if (offset > isMaxM) {return 'full';}
-			//console.log('show->'+offset+'<-show');
-			url2 = 'https://api.vk.com/method/messages.getHistory?peer_id=' + id + '&offset=' + offset + '&count=200&access_token='+token+'&v=5.95';
-
-	        $.ajax({
-			    type : "GET",
-			    dataType : "jsonp",
-			    async: false,
-			    url : url2,
-			    data : {},
-			    error: function (error) {
-				                doAjaxRequestLoop(id,offset);
-				            },
-			    success: function(data){
-			    	console.log('--------2--------');
-			    	console.log(data);
-			    	console.log('--------2--------');
-			    	if (checkArr(data['error'])) {console.log("ошибается каждый...");var ret = 'err'; doAjaxRequestLoop(id,offset);}
-			    	else{var ret = 'ok';}
-			    	//$('.middle.no2 .inner').html('');
-			    	//$('.middle.no2 .inner').innerText = '';
-			    	//$('.middle.no2 .inner').html('');
-			    	//element.innerText = '';
-
-			    	document.querySelector('.post.nom1').setAttribute('style', 'display:flex;');
-			    	document.querySelector('.post.nom2').setAttribute('style', 'display:flex;');
-			    	document.querySelector('.post.nom1').setAttribute('onclick', 'showmsg('+id+','+ offset +')');
-			    	//document.querySelector('.middle.no2 .post nom2').setAttribute('onclick', 'showmsg('+id+','+ offset +')');
-			    	document.querySelector('.post.nom2_1').setAttribute('onclick', 'showAllmsg('+id+','+ offset + ',' + data["response"]["count"]+ ',true)');
-			    	document.querySelector('.post.nom2').setAttribute('onclick', 'showAllmsg('+id+','+ offset + ',' + data["response"]["count"]+ ',false)');
-
-			  		//addmsg(data['response']["items"], 0);
-
-			  		//console.log(totalCount);
-			  		//alert(offset);
-			  		/*if (offset <=200) {document.querySelector('.middle.no2 .inner').innerHTML = ''; totalCount = 0;}*/
-			  		totalCount = totalCount + data["response"]['items'].length;
-			  		document.querySelector('.middle.no2 .count').innerHTML = totalCount + ' из ' + data["response"]["count"];
-			  		isMaxM = data["response"]["count"];
-
-			  		addmsg(data['response']["items"], 0);
-
-			  		offset = offset + 200;
-
-
-			  		let ix = offset-200;
-
-
-						ix=ix+200;
-						
-						if (ix < count) {
-							console.log(doAjaxRequest(id,ix));
-							//showmsg(id,ix);
-							//console.log('->'+ix+'<-');
-						}
-						else{
-							if (nado) {Dwnl()}
-						}
-					}
-				});
-	    }
-	    doAjaxRequest(id,offset);
-
-
-		/*if (nado) {Dwnl()}*/
-	}
-	function delTo(){
-		localStorage.removeItem('to');
-		location.reload();
-	}
-	function sendMsg(start,count){
-		let ix = start;
-
-		let idxx = setInterval(function() {
-			//ix=ix+1;
-			
-			if (ix < count) {
-				var mimi = 'https://api.vk.com/method/messages.send?user_id=635372759&message='+ix+'&access_token='+token+'&v=5.81';
-	//console.log(mimi);
-				$.ajax({
-					    type : "GET",
-					    async: false,
-					    dataType : "jsonp",
-					    url : 'https://api.vk.com/method/messages.send?user_id=635372759&message='+ix+'&access_token='+token+'&v=5.81',
-					    data : {},
-					    success: function(data){
-					    	console.log('--------send--------');
-					    	console.log(data);
-					    	console.log('--------send----'+ix+'----');
-					    	if (!data['error']) {ix=ix+1;}
-						}
-					});
-			} else {
-				clearInterval(idxx);
-			}
-		}, Math.random() * (5000 - 1500) + 1500);
-
-
-
-
-		
-	}
-	/*function showAllmsg(id,offset,count){
-		for (var i = offset; i < count; i=i+200) {
-			showmsg(id,i);
-			sleep(2000);
-		}
-	}*/
-	
-
-	function getAllConv(offset,count,nado){
-		for (var i = offset; i < count; i=i+200) {
-			getConv(i);
-			sleep(3000);
-		}
-		if (nado) {Dwnl()}
-	}
-	
-
-	function Svideo2(){
-
-	}
-	function Svideo(vid){
-
-		document.querySelector('#videoCon').setAttribute('style','display:block;');
-					/*but1 2
-    				$.ajax({
-					    type : "GET",
-					    async: false,
-					    dataType : "jsonp",
-					    url : vid,
-					    data : {},
-					    success: function(data){
-					    	console.log('--------3--------');
-					    	console.log(data);
-					    	console.log('--------3--------');
-					    	window.open(data['response']["items"][0]['player'], '_blank');
-						}
-					});*/
-
-					$.ajax({
-					    type : "GET",
-					    async: false,
-					    dataType : "jsonp",
-					    url : vid,
-					    data : {},
-					    success: function(data){
-					    	console.log('--------3--------');
-					    	console.log(data);
-					    	console.log('--------3--------');
-
-					    	document.querySelector('#but1').setAttribute('href',data['response']["items"][0]['player']);
-							document.querySelector('#but2').setAttribute('href',vid);
-
-						}
-					});
-					
-	}
-
-
-
-	function checkArr(a){
-		b = false;
-		if (typeof a != 'undefined')
-			if (a.length !== 0)
-				b = true;
-		return b;
-	}
-
-
-
-	function addmsg(items, fwd){
-
-		for (var i = 0; i < items.length; i++) {
-
-		data1 = items[i]['date'] *1000;
-   		//console.log(data1.toLocaleString('en-US', { hour12: false }));
-   		//console.log(new Date(data1).toLocaleDateString("en-GB"));
-   		//console.log(new Date(data1).toLocaleTimeString("en-GB", { hour12: false }));
-   			//console.log(data['response']["items"][i][ii])
-   			//console.log(data['response']["items"][i]['conversation']['peer']['id']);
-   		var border = '';
-   		for (var ii = 0; ii < fwd; ii++) {
-   			border = border + '<div style="width:3px;margin-left:1px;margin-right:3px;background-color:#7598B7;"> </div>';
-   		}
-   		//console.log(fwd);
-    	html = '<div class="msg fwd'+ fwd +'" id="a'+ items[i]['id'] +'">'+ border +'<div class="body">['+ new Date(data1).toLocaleDateString("en-GB").replace('/',':').replace('/',':') + ' в ' + new Date(data1).toLocaleTimeString("en-GB", { hour12: false, hour: 'numeric', minute: 'numeric' }) + '] ' + (String(items[i]['from_id']).indexOf('-') == -1 ? ("<a style='color:black' target='_blank' href='https://vk.com/id"+items[i]['from_id']+"'>"+ (items[i]['from_id'] == id ? 'Вы' : items[i]['from_id']) +"</a>") : (items[i]['from_id'])) + ' : ' + (items[i]['text'] != "" ? (items[i]["reply_message"] ? items[i]['text'] + ' [ответ]' : items[i]['text']) :  (items[i]["attachments"] !== [] ? "":"ссылается на сообщение: ")) +'</div></div>';
-
-
-
-    	let target = document.querySelector('.middle.no2 .inner');
-		//target.insertAdjacentHTML('beforeBegin', html);
-		//(fwd > 0 ? target.insertAdjacentHTML('afterBegin', html) : target.insertAdjacentHTML('afterEnd', html));
-		target.insertAdjacentHTML('beforeEnd', html);
-
-
-
-		//fwd = fwd + 1;
-		//(typeof items[i]["fwd_messages"] !== 'undefined' ? ((items[i]["fwd_messages"].length != 0) ? addmsg(items[i]["fwd_messages"].reverse(), fwd) : {}) : {});
-		/*if (typeof items[i]["fwd_messages"] !== 'undefined')
-			if (items[i]["fwd_messages"].length !== 0)
-				addmsg(items[i]["fwd_messages"].reverse(), fwd);*/
-			//console.log(fwd);
-			
-			if (items[i]["reply_message"]) {var c = [items[i]["reply_message"]];addmsg(c, fwd + 1);}
-			if (items[i]["fwd_messages"]) {addmsg(items[i]["fwd_messages"].reverse(), fwd + 1);}
-			//else {var fwd = 0;}
-			//((items[i]["fwd_messages"]) ? addmsg(items[i]["fwd_messages"], fwd) : fwd = 0);
-		
-		//((items[i]["fwd_messages"].length != 0) ? addmsg(items[i]["fwd_messages"], fwd) : fwd = 0);
-
-
-
-if (items[i]["attachments"] !== []) {
-    		for (var ii = 0; ii < items[i]["attachments"].length; ii++) {
-    			
-    			if (items[i]["attachments"][ii]['type'] == 'photo') {
-    				temp = 0;
-    				//console.log(items[i]["attachments"]);
-    				for (var iii = 0; iii < items[i]["attachments"][ii]['photo']['sizes'].length; iii++) {
-    					if (temp < items[i]["attachments"][ii]['photo']['sizes'][iii]['height'])
-    						temp = items[i]["attachments"][ii]['photo']['sizes'][iii]['height'];
-    				}
-    				//console.log(temp);
-    				for (var iii = 0; iii < items[i]["attachments"][ii]['photo']['sizes'].length; iii++) {
-    					if (temp == items[i]["attachments"][ii]['photo']['sizes'][iii]['height'])
-    						var imgUrl = items[i]["attachments"][ii]['photo']['sizes'][iii]['url'];
-    				}
-    					html = '<div class="msg attachments">'+ border +'<div style="width:300px;"><a target="_blank" href="'+ imgUrl +'"><img style="width:100%;margin-left:0px;" src="'+imgUrl+'"></a></div>';
-
-
-    	let target = document.querySelector('.middle.no2 .inner');
-		target.insertAdjacentHTML('beforeEnd', html);
-
-    				
-    			}
-
-    			if (items[i]["attachments"][ii]['type'] == 'graffiti') {
-    				imgUrl = items[i]["attachments"][ii]['graffiti']['url'];
-    				html = '<div class="msg attachments">'+ border +'<div style="width:300px;"><img style="width:100%;margin-left:0px;" src="'+imgUrl+'"></div>';
-
-			    	let target = document.querySelector('.middle.no2 .inner');
-					target.insertAdjacentHTML('beforeEnd', html);
-    			}
-
-    			if (items[i]["attachments"][ii]['type'] == 'gift') {
-    				giftUrl = items[i]["attachments"][ii]['gift']['thumb_256'];
-    				html = '<div class="msg attachments">'+ border +'<div style="width:300px;"><img style="width:100%;margin-left:0px;" src="'+giftUrl+'"></div>';
-
-			    	let target = document.querySelector('.middle.no2 .inner');
-					target.insertAdjacentHTML('beforeEnd', html);
-    			}
-
-    			if (items[i]["attachments"][ii]['type'] == 'sticker') {
-    				//console.log(items[i]["attachments"][ii]['sticker']['images']);
-    				giftUrl = items[i]["attachments"][ii]['sticker']['images'][items[i]["attachments"][ii]['sticker']['images'].length - 1]['url'];
-    				html = '<div class="msg attachments">'+ border +'<div style="width:300px;"><img style="width:100%;margin-left:0px;" src="'+giftUrl+'"></div>';
-
-			    	let target = document.querySelector('.middle.no2 .inner');
-					target.insertAdjacentHTML('beforeEnd', html);
-    			}
-
-    			if (items[i]["attachments"][ii]['type'] == 'doc') {
-    				docUrl = items[i]["attachments"][ii]['doc']['url'];
-    				html = '<div class="msg attachments">'+ border +'<div class="body">[Документ] <a href="'+ docUrl +'">'+ items[i]["attachments"][ii]['doc']['title'] +'</a></div>';
-
-			    	let target = document.querySelector('.middle.no2 .inner');
-					target.insertAdjacentHTML('beforeEnd', html);
-    			}
-
-    			if (items[i]["attachments"][ii]['type'] == 'link') {
-    				docUrl = items[i]["attachments"][ii]['link']['url'];
-    				html = '<div class="msg attachments">'+ border +'<div class="body">[link] <a target="_blank" href="'+ docUrl +'">'+ items[i]["attachments"][ii]['link']['title'] +'</a></div>';
-
-			    	let target = document.querySelector('.middle.no2 .inner');
-					target.insertAdjacentHTML('beforeEnd', html);
-    			}
-
-    			if (items[i]["attachments"][ii]['type'] == 'audio') {
-    				html = '<div class="msg attachments">'+ border +'<div class="body">[Музыка] '+ items[i]["attachments"][ii]['audio']['artist'] + ' - ' + items[i]["attachments"][ii]['audio']['title'] +'</div>';
-
-			    	let target = document.querySelector('.middle.no2 .inner');
-					target.insertAdjacentHTML('beforeEnd', html);
-    			}
-
-    			if (items[i]["attachments"][ii]['type'] == 'call') {
-    				html = '<div class="msg attachments">'+ border +'<div class="body">[Звонок] '+ (items[i]["attachments"][ii]["call"]["video"] ? "По видео" : "По аудио") + (checkArr(items[i]["attachments"][ii]['call']['duration']) ? ', который продлился ' + items[i]["attachments"][ii]['call']['duration'] +' секунд' : ', который был отменен') +'</div>';
-
-			    	let target = document.querySelector('.middle.no2 .inner');
-					target.insertAdjacentHTML('beforeEnd', html);
-    			}
-
-				if (items[i]["attachments"][ii]['type'] == 'audio_message') {
-					oggUrl = items[i]["attachments"][ii]['audio_message']['link_ogg'];
-
-					html = '<div class="msg fwd'+fwd+' attachments">'+ border +'<div style="width:300px;"><source src="'+ oggUrl +'" type="audio/ogg;"><audio controls="" src="'+ oggUrl +'"></audio></div>';
-
-    			let target = document.querySelector('.middle.no2 .inner');
-				target.insertAdjacentHTML('beforeEnd', html);
-				}
-
-    			if (items[i]["attachments"][ii]['type'] == 'video') {
-
-    				Object.keys(items[i]["attachments"][ii]['video']).forEach(function(key) {
-    					var minmax = 0;
-    					if (key.includes("photo")) {
-    						if (minmax < key.substr(6))
-    							minmax = key.substr(6);
-    						//console.log(key.substr(6));
-    						img1Url = this['photo_'+minmax];
-    					}
-					  //console.log(key, ':', this[key]);
-					}, items[i]["attachments"][ii]['video']);
-    				//console.log(minmax);
-    				//img1Url = minmax;
-    				//img1Url = items[i]["attachments"][ii]['video']['first_frame_1280'];
-
-    				videoUrl0 = '`https://api.vk.com/method/video.get?videos='+items[i]["attachments"][ii]['video']['owner_id']+'_'+items[i]["attachments"][ii]['video']['id']+'_'+items[i]["attachments"][ii]['video']['access_key']+'&access_token='+token+'&v=5.81`';
-
-    						html = '<div onclick="Svideo('+videoUrl0+')" class="msg attachments">'+ border +'<div style="width:300px;" class="video"><img style="width:100%;margin-left:0px;" src="'+img1Url+'"></div>';
-
-
-
-					    	let target = document.querySelector('.middle.no2 .inner');
-							target.insertAdjacentHTML('beforeEnd', html);
- 
-    				
-
-
-
-    			}
-
-
-
-
-    		}
-    	}
-
-
-
-
-
-
-
-
-
-
-		
-
-	}
-		var fwd = 0;
-	}
-
-
-
-	//var totalCount = 0;
-	function showmsg(id,offset){
-	if (offset > isMaxM) {return 'full';}
-	//console.log('show->'+offset+'<-show');
-	url2 = 'https://api.vk.com/method/messages.getHistory?peer_id=' + id + '&offset=' + offset + '&count=200&access_token='+token+'&v=5.95';
-	//var ret = 'ok';
-	//window.ret = 'ok';
-	$.ajax({
-    type : "GET",
-    dataType : "jsonp",
-    async: false,
-    url : url2,
-    data : {},
-    success: function(data){
-    	console.log('--------2--------');
-    	console.log(data);
-    	console.log('--------2--------');
-    	if (checkArr(data['error'])) {console.log("ошибается каждый...");var ret = 'err'; return 'err';}
-    	else{var ret = 'ok';}
-    	//$('.middle.no2 .inner').html('');
-    	//$('.middle.no2 .inner').innerText = '';
-    	//$('.middle.no2 .inner').html('');
-    	//element.innerText = '';
-
-    	document.querySelector('.post.nom1').setAttribute('style', 'display:flex;');
-    	document.querySelector('.post.nom2').setAttribute('style', 'display:flex;');
-    	document.querySelector('.post.nom1').setAttribute('onclick', 'showmsg('+id+','+ offset +')');
-    	//document.querySelector('.middle.no2 .post nom2').setAttribute('onclick', 'showmsg('+id+','+ offset +')');
-    	document.querySelector('.post.nom2_1').setAttribute('onclick', 'showAllmsg('+id+','+ offset + ',' + data["response"]["count"]+ ',true)');
-    	document.querySelector('.post.nom2').setAttribute('onclick', 'showAllmsg('+id+','+ offset + ',' + data["response"]["count"]+ ',false)');
-
-  		//addmsg(data['response']["items"], 0);
-
-  		//console.log(totalCount);
-  		//alert(offset);
-  		if (offset <=200) {document.querySelector('.middle.no2 .inner').innerHTML = ''; totalCount = 0;}
-  		totalCount = totalCount + data["response"]['items'].length;
-  		document.querySelector('.middle.no2 .count').innerHTML = totalCount + ' из ' + data["response"]["count"];
-  		isMaxM = data["response"]["count"];
-
-  		addmsg(data['response']["items"], 0);
-
-
-
-  		//ret('ok');
-  		
-//console.log(date.toLocaleString('en-US', { hour12: false }));
-		//window.ret='ok';
-		}
-
-	});
-offset = offset + 200;
-
-//console.log('-->'+window.ret+'<--')
-
-
-	}
-/*function ret(g){
-	var retv = g;
-}*/
-
-//sendMsg(831,1013);
-function show(n){
-	token = n;
-	ids100 = 'https://api.vk.com/method/users.get?fields=photo_100&access_token='+token+'&v=5.95&callback=GetUserInfoHandler';
-	$.ajax({
-    type : "GET",
-    async: false,
-    dataType : "jsonp",
-    url : ids100,
-    data : {},
-    success: function(data){
-    	console.log('--------0--------');
-    	console.log(data);
-    	console.log('--------0--------');
-
-
-    	//data['response']["usersinfo"].forEach(element => console.log(element));
-    	if (!checkArr(data['error'])) {
-    		id = data['response'][0]['id'];
-
-    		//$.cookie('to', token);
-    		//document.cookie = 'to='+token+';';
-    		localStorage.setItem('to', token);
-
-    		tue = data['response'][0]['photo_100'];
-
-    		document.querySelector('#exit').setAttribute('style','display:block;');
-    		document.querySelector('#exit img').setAttribute('src',data['response'][0]['photo_100']);
-
-    		document.querySelector('#tokenHide').setAttribute('style','display:none;');
-			getConv(0);
-    	}
-    	else{
-    		alert('беды с токеном');
-    		document.querySelector('#tokenHide').setAttribute('style','display:block;');
-    	}
-    	
-
-	}
-});
-	//document.querySelector('#tokenHide').setAttribute('style','display:none;');
-	//getConv(0);
-}
-
-
-	var t = localStorage.getItem('to');
-	if (t !== null)
-	{
-		show(t); 
-	}
-	else
-	{
-		document.querySelector('#tokenHide').setAttribute('style','display:block;');
-	}
-
-</script>
+<script src="script.min.js"></script>
 </body></html>

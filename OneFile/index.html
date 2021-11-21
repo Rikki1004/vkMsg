@@ -1,0 +1,206 @@
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="https://vk.com/images/icons/favicons/fav_logo.ico?6">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="referrer" content="no-referrer" />
+	<!-- <meta name="viewport" content="width=device-width, user-scalable=no" /> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>vk</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto&amp;display=swap" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+
+
+	<div id="tokenHide" class="tokenHides" style="display:none;">
+		<div class="modal_cinw">
+			<input style="text-align: center;padding: 1px 3px;" id="token" type="text" value="" placeholder="token">
+			<input style="display:block; margin:10px auto 2px;" onclick="show(document.querySelector('#token').value);" type="submit" value="Войти">
+		</div>
+	</div>
+
+	<div id="videoCon" class="tokenHides" style="display:none;">
+		<div class="modal_cinw">
+			<a id="but1" onclick="document.querySelector('#videoCon').style.display = 'none'" rel="noreferrer" target="_blank" href="#"><input style="display:inline-block; margin:6px 1px 6px;" type="submit" value="Смотреть"></a>
+			<a id="but2" title="в открывшемся окне скопируйте прямую ссылку и перейдите по ней, по другому никак" onclick="document.querySelector('#videoCon').style.display = 'none'" href="#" target="_blank" download="vk.json"><input style="display:inline-block; margin:6px 1px 6px;" type="submit" value="Скачать"></a>
+		</div>
+	</div>
+
+	<div id="toggles" class="tokenHides" style="display:none;">
+		<div class="modal_cinw">
+			<div><div id="dt" class="switch-btn"></div><div style="display: inline-block;">Темная тема</div></div>
+			<br>
+			<div><div id="re" class="switch-btn"></div><div style="display: inline-block;">Реверс порядка сообщений</div></div>
+			<br>
+			<div title="Напрямую из сообщений получить ссылку на видео нельзя и нужно каждый раз для каждого видео делать запрос с токеном, а если видео ну очень много, то можно с легкостью получить блокировку токена | при включении можно будет воспроизвести видео в скачанной версии даже если токен отвалится"><div id="vi" class="switch-btn"></div><div style="display: inline-block;">Разрешать видео при скачивании</div></div>
+		</div>
+	</div>
+
+	<div class="major">
+		<div id="exit" style="display: none;" onclick="delTo();" class="image">
+			<img style="border-radius: 50%; width: 60px;" src="">
+			<div style="vertical-align: middle;height: 68px; display:none;">Нажмите чтобы выйти</div>
+		</div>
+
+		<div id="setting" style="display: block;" onclick="document.querySelector('#toggles').style.display = 'block'" class="image">
+			<svg fill="none" height="30" viewBox="0 0 20 20" width="30" xmlns="http://www.w3.org/2000/svg"><path d="M10.6 2c.98.03 1.63.58 1.96 1.6l.06.18.04.15.06.2.04.13.03.01.06-.02.1-.04.13-.06c1.16-.53 2.05-.43 2.78.36l.1.12.67.83c.6.8.58 1.63 0 2.54l-.1.15-.1.14-.12.16-.05.1-.03.04v.02l.08.05.1.06.13.07c1.13.58 1.6 1.35 1.42 2.4l-.03.16-.2.87c-.13.56-.23.82-.63 1.19-.39.35-.83.5-1.42.55h-.18l-.16.01-.2.01-.15.02.01.12.01.08.03.14c.26 1.25-.03 2.1-.97 2.62l-.14.08-.96.47c-.9.4-1.72.2-2.48-.58l-.12-.13-.11-.13-.14-.15-.08-.08-.04-.04-.07.08-.09.08-.1.11c-.78.93-1.6 1.27-2.6.88L7 17.49l-.86-.42-.26-.13c-.39-.22-.6-.42-.82-.87a2.38 2.38 0 01-.13-1.54l.03-.19.04-.2L5 14 4.93 14l-.12-.01h-.15c-1.27-.03-2.03-.51-2.33-1.55l-.04-.15-.24-1.04c-.2-.97.2-1.72 1.11-2.28l.16-.1.15-.07.17-.1.13-.08v-.02l-.05-.08-.06-.1-.09-.12c-.76-1.02-.85-1.92-.22-2.8l.1-.12.67-.83c.64-.75 1.47-.9 2.48-.52l.17.07.15.06.18.08.11.04.03-.01.03-.08.04-.11.03-.14c.3-1.17.9-1.83 1.96-1.92L9.46 2zm-.05 1.47h-1.1l-.1.01c-.24.03-.4.16-.54.68l-.04.13-.04.17c-.09.29-.22.61-.39.93a4.8 4.8 0 00-.94.46 5.28 5.28 0 01-.95-.29l-.28-.13c-.2-.08-.36-.13-.48-.14h-.07a.45.45 0 00-.33.16l-.06.06-.64.8-.08.1c-.15.21-.17.4.16.88l.18.25c.18.26.35.57.5.9-.11.32-.19.65-.23.99a5.3 5.3 0 01-.83.6l-.28.14c-.5.28-.57.46-.53.72l.01.06.23 1 .04.13c.07.25.21.39.79.41l.32.02c.3.01.65.07 1 .16.18.29.4.55.63.8.02.43-.02.85-.1 1.18-.16.78 0 .9.32 1.06l.92.45c.1.05.19.07.28.07h.05c.15-.02.32-.13.55-.4l.21-.24c.21-.23.48-.47.78-.68l.24.01h.5l.24-.02c.3.22.57.46.78.69l.21.24c.27.3.44.4.6.4h.06c.05 0 .1-.02.14-.04l.08-.03.92-.45.12-.06c.24-.14.34-.32.2-1a5.07 5.07 0 01-.1-1.18c.24-.25.45-.51.64-.8.34-.1.7-.15 1-.16l.31-.02c.67-.03.75-.2.83-.54l.22-.93c.07-.33.07-.53-.5-.85l-.29-.15a5.26 5.26 0 01-.83-.59 4.87 4.87 0 00-.22-.98c.14-.34.32-.65.49-.9l.19-.26c.33-.48.3-.67.16-.88l-.04-.06-.65-.8c-.11-.13-.2-.23-.37-.26h-.06c-.13 0-.3.04-.54.14l-.3.13c-.27.11-.6.22-.94.28-.3-.18-.61-.33-.94-.45-.16-.3-.29-.62-.37-.9l-.1-.33c-.15-.56-.32-.66-.58-.68zM10 6.9a3.11 3.11 0 110 6.23 3.11 3.11 0 010-6.23zm0 1.48a1.64 1.64 0 100 3.27 1.64 1.64 0 000-3.27z" fill="currentColor"></path></svg>
+		</div>
+
+		<div class="middle no1">
+			<div class="head">
+				Диалоги
+			</div>
+			<div class="count">-</div>
+			<div class="inner"></div>
+			
+			<div class="posts">
+				<div class="no1">
+					<div class="post nom3 underMiddle" onclick="getConv(200)">
+						Загрузить еще
+					</div>
+					<div style="background-color: black; line-height: 30px; width: 1px; margin-top: 5px;"> </div>
+					<div class="post nom4 underMiddle" onclick="">
+						Загрузить все
+					</div>
+				</div>
+		</div>
+	</div>
+	
+
+
+	<div class="middle no2">
+		<div class="head">
+			История сообщений
+		</div>
+		<div class="count">-</div>
+		<div class="inner"></div>
+
+		<div class="posts">
+			<div class="no1">
+				<div class="post nom1 underMiddle" style="display:flex;" onclick="">
+					Загрузить еще
+				</div>
+				<div style="background-color: black; line-height: 30px; width: 1px; margin-top: 5px;"> </div>
+				<div class="post nom1_1 underMiddle" style="display:flex;" onclick="Dwnl();">
+					Скачать
+				</div>
+			</div>
+			<div class="no2">
+				<div class="post nom2 underMiddle" style="display:flex;" onclick="">
+					Загрузить всё
+				</div>
+				<div style="background-color: black; line-height: 30px; width: 1px; margin-top: 5px;"> </div>
+				<div class="post nom2_1 underMiddle" style="display:flex;" onclick="">
+					Скачать всё
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style id="generalCss" type="text/css">
+body{
+	font-family: 'Roboto', sans-serif;
+}
+a{
+	color:black;
+}
+.video{
+	position: relative;
+}
+.video::after{
+	content: '';
+	transform: scale(0.35);
+	position: absolute;
+	top: 0; right: 0;
+	bottom: 0; left: 0;
+
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAF+AQMAAADOdjCVAAAABlBMVEUAAAAAAAClZ7nPAAAAAnRSTlMA/iyWEiMAAANDSURBVHja7dy7raRAEIXhg8bAJARCmVA2FAiNUAgBE+0iarcfGnel8yPdMaqM691vZk43j+6WSrXmMOrQp15h1fYB3mHV9QHCrFWtxjBrF4iw1NmBJcy6YQQRKxnEUhvLMGJnGUacZBqVutggRNxwECIkaQhQKxvFiI2NYhvHKUAdbBpEnGwaRFwd+C2jfnVgqWEaNfSZVB2ryndvwCGrpgoM7i9oU3Dtf62qn12AW2YtBRjtDGuKewFOmTUXYLIHQe1/p6KYNT4CzPY0qBPh1GxPA2n4B5ShkF0R1xOAPRGl5Qlg8Weyyqd/BWBfS9L8BACu5gLEE4B9O5CmL/kGCSSQQAIJJJBAAgkkkEACCSSQQAIJJJBAAhIChktCwBgrA6bYGTDHKRGgnhswIFYELBE7BU4K3BSIlQI7BU4K3BSIjQI7BS4KBAY2ChwUuCgQGNgocFDgokBgYPOBPy0EHzgrcAPgXQUAjBXYfWCowOkDbSRuAMxRavWBHoIP9BB8oIcAgB6CD/QQfKCH4AM9BAD0EHzgVYHDB3oIPqB3FQAwVWDzgR6CD6gCFwBaCADoIfhAD8EHeggAaCEAoIfgAz0EH+gvfABolzQAxgqsPjC0FH1ACwVqCDsARgoMFNDy0wD+CTjEmc4DOpEGei2M9Gqs97QbAPSGgm9p+KaKb+v0wYIfbfjhih/v9AUDv+Lgl6z+rusDLQIf6O/7PoBftunrPl5w4CUPXnTRZR9eeOKlL1580+U/3oDol7IP9Ah8oF/KNoA3ovBW2DObcXg7EG9I4i1RQQBvC+ONabw1LgicFDgosEIAH9LgYyJ8UEWPyvBhHTsufNMDS3xkig9t8bHxSA+uXyEhQLckBEhKQEpASkBKQEpASkBKQEpASkBKQEpASkBKQEpASkBKQEpASkBKQErgP/VFDZbgN1gYwBttiQOBm439NIBbvnEgYNu7mQG89Z9w88GJAbx/onALSNyEErfBfIU/EcqxMm8FipuR4naovCHr4oZQfsH9RFNa3BYXN+bFrYFxc2LcHhk3aMYtonmTajARLolNhFNi47hLbBw3iQ2DxIbhlliKp8RS3CUWgsR+Q51GZCA3tXJvKi3Cv0yfOFCozvWBAAAAAElFTkSuQmCC);
+	background-repeat:no-repeat;
+	background-position:center;
+}
+.msg{
+	display: flex;
+	justify-content: left;
+	/*margin-bottom: 2px;*/
+	line-height: 19px;
+}
+
+html.dark{
+	background-color: #222226;
+	color: #777;
+}
+html.dark a{
+	color: #bfbfbf !important;
+}
+</style>
+
+<script id="Svideo" type="text/javascript">function Svideo(vid){
+	/*$.ajax({
+		type : "GET",
+		dataType : "jsonp",
+		url : vid,
+		data : {},
+		success: function(data){ window.open(data['response']['items'][0]['player']) }
+		});*/
+	function jsonp(url, callback) {
+	    var callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
+	    window[callbackName] = function(data) {
+	        delete window[callbackName];
+	        document.body.removeChild(script);
+	        callback(data);
+	    };
+
+	    var script = document.createElement('script');
+	    script.src = url + (url.indexOf('?') >= 0 ? '&' : '?') + 'callback=' + callbackName;
+	    document.body.appendChild(script);
+	}
+
+	jsonp(vid, function(data) {
+	   window.open(data['response']['items'][0]['player']);
+	});
+
+	}</script> 
+<!-- модифицированная функция для загрузки видео из скачанных файлов: здесь реализован JSONP (только так можно обратиться к video api), вообще этот запрос можно сделать через AJAX, но тогда нужно будет подключать Jquery-->
+<style>.switch-btn{display:inline-block;width:38px;height:16px;border-radius:12px;background:#bfbfbf;z-index:0;margin:0;padding:0;border:none;cursor:pointer;position:relative;transition-duration:300ms;margin-right:10px;top:2px}html.dark .switch-btn{background:#111;box-shadow:none}.switch-btn::after{content:"";height:24px;width:24px;border-radius:18px;background:#fff;top:-4px;left:-6px;transition-duration:300ms;box-shadow:0 0 10px 0 #999;position:absolute;z-index:1}html.dark .switch-btn::after{background:#2a2a2a}.switch-on{box-shadow:inset 0 0 10px 0 #999}.switch-on::after{left:20px;background:#fff}html::-webkit-scrollbar{width:10px;background-color:transparent}html::-webkit-scrollbar-track{background-color:transparent}html::-webkit-scrollbar-thumb{background-color:#c3d0dd;border-radius:100px;box-shadow:inset 0 0 6px rgba(0,0,0,0.3)}html.dark::-webkit-scrollbar-thumb{background-color:#aaa}.inner::-webkit-scrollbar{width:10px;height:0;background-color:transparent}.inner::-webkit-scrollbar-track{background-color:transparent}.inner::-webkit-scrollbar-thumb{background-color:#c3d0dd;border-radius:100px}html.dark .inner::-webkit-scrollbar-thumb{background-color:#aaa}.middle .count{text-align:center;line-height:25px;border-bottom:1px solid grey}.tokenHides{position:fixed;left:0;top:0;width:100%;height:100%;background-color:rgba(0,0,0,0.7);text-align:center;z-index:9999}.tokenHides::after{display:inline-block;vertical-align:middle;width:0;height:100%;content:''}.modal_cinw{padding:10px;display:inline-block;vertical-align:middle;position:relative;text-align:left;background:#fff;font-size:15px}html.dark .modal_cinw{background:#222228}#exit{position:absolute;left:6px;top:6px}#setting{position:absolute;right:6px;top:6px}.block{display:flex;justify-content:left;height:40px;border-bottom:1px solid grey}.block .image img{width:30px;border-radius:50%}.block .image{margin:auto 10px;height:30px;justify-content:center}.block .name{line-height:40px}.major{margin-top:35px!important}.middle{border:1px solid #000;height:740px;margin-left:65px}.middle.no2 .inner{overflow-y:scroll;height:calc(100% - 128px)}.middle.no1 .inner{overflow-y:scroll;height:calc(100% - 92px)}.middle .post{line-height:30px;color:#fff;display:inline-block;align-items:center;justify-content:center;background-color:#7598B7;width:50%;text-align:center;transition:.3s}html.dark .middle .post{background-color:#3c3c3c}.middle .post:hover{background-color:#3a6a95}.middle .posts .no1,.no2{display:flex;justify-content:center}.middle{min-width:300px;display:block!important}.middle .head{background-color:#7598B7;text-align:center;line-height:30px;color:#fff}html.dark .middle .head{background-color:#323232}.middle .posts .no1 div:first-child{border-radius:15px 0 0 15px}.middle .posts .no2 div:first-child{border-radius:15px 0 0 15px}.middle .posts .no1 div:last-child{border-radius:0 15px 15px 0}.middle .posts .no2 div:last-child{border-radius:0 15px 15px 0}.post{margin-top:5px!important}.major{display:flex;justify-content:space-between;max-width:1150px;margin:0 auto}@media screen and (min-width: 900px){.middle.no2{width:500px}.major{flex-direction:row}}@media screen and (max-width: 900px){.underMiddle{width:500px}.middle,.underMiddle{margin:0 auto}.middle.no2{margin-top:30px}.middle.no1,.middle.no2,.underMiddle{width:80%}.major{flex-direction:column}}@media screen and (max-width: 660px){.major{margin-top:70px!important;height:200%}.middle.no1,.middle.no2,.underMiddle{width:100%!important}.middle{height:50%}#exit div{font-size:15.5px;display:inline-block!important}}</style>
+
+<script type="text/javascript">var $jscomp=$jscomp||{};$jscomp.scope={};$jscomp.createTemplateTagFirstArg=function(a){return a.raw=a};$jscomp.createTemplateTagFirstArgWithRaw=function(a,e){a.raw=e;return a};var reverse=!1,videoD=!1;
+$(".switch-btn").click(function(a){$(this).toggleClass("switch-on");$(this).hasClass("switch-on")?("vi"==a.target.id&&(videoD=!0,localStorage.setItem("vi",!0)),"dt"==a.target.id&&(document.querySelector("html").setAttribute("class","dark"),localStorage.setItem("dt",!0)),"re"==a.target.id&&(reverse=!0,document.querySelector(".middle.no2 .inner").innerHTML="",totalCount=0,document.querySelector(".middle.no2 .count").innerHTML="-",func(!1),localStorage.setItem("re",!0)),$(this).trigger("on.switch")):
+("vi"==a.target.id&&(videoD=!1,localStorage.setItem("vi",!1)),"dt"==a.target.id&&(document.querySelector("html").setAttribute("class",""),localStorage.setItem("dt",!1)),"re"==a.target.id&&(reverse=!1,document.querySelector(".middle.no2 .inner").innerHTML="",totalCount=0,document.querySelector(".middle.no2 .count").innerHTML="-",func(!1),localStorage.setItem("re",!1)),$(this).trigger("off.switch"))});var tue="";
+$("#exit").hover(function(){document.querySelector("#exit img").setAttribute("src","data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4AQMAAAADqqSRAAAABlBMVEX6YVz7YVyTTbZfAAAAAnRSTlP4Ad3xlhsAAAG1SURBVDjLzZVNboQwDIUdzSLdcYFKbHuKcrRJb5Zdr0FvQHdZRKF+tgmMYdTtIEbiG/L7/PKg9fGi1+BC4wMT0ZEX5uHAiTns3AjXvXMRHjvPwrFzEg4bo/uHDQCuRBPGmIyLNE0yIMlwg6wpGmdpWelmnHSR0guP8gLNlJttZcGEhI6jaTAJF90JtxuFl00z9OPnORinqHwzzso5GuMFcxqMlyC8Sc0TKU/GVbjZ9Ks8nbnuJeSezKFzAhfmb4Zf5hHMq/jC6vgGL9FUuq95UJYpeLAZPIMn+fEj4U8oUZkXYygBlYQzVIqiJk+lnG5cpHXnHHAbT6ggmqwVzItGZ1STt6Jc6BNiK9+hzDtU69zoDaq1jVd1j7DIlUiNtXEWM+w8iyd2VjPtXMQjO6tHnr/3/f34fv7D+vz6r/Zn+2+X+lzot+kbTG/Tvz6rj6tfs/oKX9R/84fywT/x0V+z+av7bzA/wp8/5sdy8O944Wfv9//Ohz9Pp/Pmz6M/r9mdZ3/efR74vPB54vPG59Epr3ye+bzzeVhJ6tPz0uepz9tTHvu89nnu8/70PfDfi9P35GW+d3/1sFDyskbaewAAAABJRU5ErkJggg==")},function(){document.querySelector("#exit img").setAttribute("src",
+tue)});$("#videoCon").click(function(a){$(a.target).is(".modal_cinw")||(document.querySelector("#videoCon").style.display="none")});$("#toggles").click(function(a){"tokenHides"==a.target.className&&(document.querySelector("#toggles").style.display="none")});count=200;fields="photo_50";var ids=[],token;totalCountC=0;var isMaxC=999999999,isMaxM=999999999;
+function getConv(a){if(a>isMaxC)return!1;url1="https://api.vk.com/method/messages.getConversations?fields="+fields+"&count="+count+"&offset="+a+"&access_token="+token+"&v=5.81";$.ajax({type:"GET",async:!1,dataType:"jsonp",url:url1,data:{},success:function(e){for(var c=0;c<e.response.items.length;c++)ids.push(e.response.items[c].conversation),myltiId=checkArr(e.response.items[c].conversation.chat_settings)?"chat"==e.response.items[c].conversation.peer.type?
+e.response.items[c].conversation.peer.id:e.response.items[c].conversation.chat_settings.owner_id:e.response.items[c].conversation.peer.id,html='<div class="block" onclick="func(this);showmsg('+myltiId+',0)" id="a'+myltiId+'"><div class="image"><img src=""></div><div class="name"></div></div>',document.querySelector(".middle.no1 .inner").insertAdjacentHTML("beforeEnd",html);var h="https://api.vk.com/method/execute?code=var%20users%20%3D%20API.users.get(%7B%22user_ids%22%3A%22",d="https://api.vk.com/method/execute?code=var%20groups%20%3D%20API.groups.getById(%7B%22group_ids%22%3A%22";
+for(c=0;c<ids.length;c++)"user"==ids[c].peer.type&&(h=h+ids[c].peer.id+"%2C"),"group"==ids[c].peer.type&&(d=d+String(ids[c].peer.id).substr(1)+"%2C",String(ids[c].peer.id).substr(1)),"chat"==ids[c].peer.type&&(document.querySelector("#a"+ids[c].peer.id+" img").setAttribute("src",checkArr(ids[c].chat_settings.photo)?ids[c].chat_settings.photo.photo_50:"https://vk.com/images/icons/im_multichat_50.png"),$("#a"+ids[c].peer.id+" div.name").html(ids[c].chat_settings.title));h=h+"%22%2C%22fields%22%3A%22photo_50%2Conline%22%7D)%3B%20return%20%7B%22usersinfo%22%3Ausers%7D%3B&access_token="+
+token+"&callback=GetUsersHandler&v=5.95";d=d+"%22%7D)%3B%20return%20%7B%22groupsinfo%22%3Agroups%7D%3B&access_token="+token+"&callback=GetGroupsHandler&v=5.95";$.ajax({type:"GET",async:!1,dataType:"jsonp",url:h,data:{},success:function(g){g.response.usersinfo.forEach(function(f){return document.querySelector("#a"+f.id+" img").setAttribute("src",f.photo_50)});g.response.usersinfo.forEach(function(f){return $("#a"+f.id+
+" div.name").html(f.first_name+" "+f.last_name)})}});$.ajax({type:"GET",async:!1,dataType:"jsonp",url:d,data:{},success:function(g){g.response.groupsinfo.forEach(function(f){return document.querySelector("#a-"+f.id+" img").setAttribute("src",f.photo_50)});g.response.groupsinfo.forEach(function(f){return $("#a-"+f.id+" div.name").html(f.name)})}});document.querySelector(".post.nom3").setAttribute("onclick","getConv("+
+(a+200)+")");document.querySelector(".post.nom4").setAttribute("onclick","getAllConv("+(a+200)+","+e.response.count+")",!1);totalCountC+=e.response.items.length;document.querySelector(".middle.no1 .count").innerHTML=totalCountC+" \u0438\u0437 "+e.response.count;isMaxC=e.response.count}})}
+function func(a){document.querySelectorAll(".middle.no1 .inner .block").forEach(function(e){e.setAttribute("style","");e.setAttribute("class","block")});a&&($("html, body").animate({scrollTop:1E4},600),a.style.backgroundColor="#818181",a.style.color="#000",a.setAttribute("class","block clicked"))}
+function Dwnl(){function a(){var g=String(document.querySelector("#generalCss").innerHTML),f=String(document.querySelector("#Svideo").outerHTML);gh=String(document.querySelector(".clicked").querySelector(".name").innerHTML);na=gh+".html";var k=document.createElement("a");k.setAttribute("href","data:text/plain;charset=utf-8,<html"+("true"==localStorage.getItem("dt")?' class="dark"':"")+'><head><meta charset="utf-8"><style type="text/css">'+encodeURIComponent(g)+"</style>"+encodeURIComponent(f)+"<head><body>"+
+encodeURIComponent(document.querySelector(".middle.no2 .inner").innerHTML)+"</body></html>");k.setAttribute("download",na);k.style.display="none";document.body.appendChild(k);k.click();document.body.removeChild(k)}function e(){var g=document.querySelectorAll(".videoA");d=g.length;if(0===d)return a(),0;h=0;var f=Promise.resolve();g.forEach(function(k){return f=f.then(function(){return c(k)})})}function c(g){var f=g.getAttribute("onclick");return-1!==f.indexOf("window.open")?(h++,h==d&&a(),0):$.ajax({type:"GET",
+async:!1,dataType:"jsonp",url:f.slice(8,-2),data:{},success:function(k){g.setAttribute("onclick","window.open('"+k.response.items[0].player+"')");h++;h==d&&a()}})}var h,d;videoD?e():a()}function sleep(a){var e=Date.now();do var c=Date.now();while(c-e<a)}
+function showAllmsg(a,e,c,h){function d(k,m){f=0;g(k,m)}function g(k,m){f+=1;if(5<f)alert("too many attempts.");else{if(m>isMaxM)return h&&Dwnl(),"full";url2="https://api.vk.com/method/messages.getHistory?peer_id="+k+"&offset="+m+"&count=200&access_token="+token+"&v=5.95";$.ajax({type:"GET",dataType:"jsonp",async:!1,url:url2,data:{},error:function(l){g(k,m)},success:function(l){if(checkArr(l.error))return console.log("err"),
+g(k,m),0;document.querySelector(".post.nom1").setAttribute("style","display:flex;");document.querySelector(".post.nom2").setAttribute("style","display:flex;");document.querySelector(".post.nom1").setAttribute("onclick","showmsg("+k+","+m+")");document.querySelector(".post.nom2_1").setAttribute("onclick","showAllmsg("+k+","+m+","+l.response.count+",true)");document.querySelector(".post.nom2").setAttribute("onclick","showAllmsg("+k+","+m+","+l.response.count+",false)");totalCount+=l.response.items.length;
+document.querySelector(".middle.no2 .count").innerHTML=totalCount+" \u0438\u0437 "+l.response.count;isMaxM=l.response.count;addmsg(l.response.items,0);m+=200;l=m-200;l+=200;l<c?console.log(d(k,l)):h&&Dwnl()}})}}var f;d(a,e)}function delTo(){localStorage.removeItem("to");location.reload()}function getAllConv(a,e,c){for(;a<e;a+=200)getConv(a),sleep(3E3);c&&Dwnl()}
+function Svideo(a){document.querySelector("#videoCon").setAttribute("style","display:block;");$.ajax({type:"GET",async:!1,dataType:"jsonp",url:a,data:{},success:function(e){document.querySelector("#but1").setAttribute("href",e.response.items[0].player);document.querySelector("#but2").setAttribute("href",a)}})}function checkArr(a){b=!1;"undefined"!=typeof a&&0!==a.length&&(b=!0);return b}
+function addmsg(a,e){for(var c=0;c<a.length;c++){data1=1E3*a[c].date;for(var h="",d=0;d<e;d++)h+='<div style="width:3px;margin-left:1px;margin-right:3px;background-color:#7598B7;"> </div>';html='<div class="msg fwd'+e+'" id="a'+a[c].id+'">'+h+'<div class="body">['+(new Date(data1)).toLocaleDateString("en-GB").replace("/",":").replace("/",":")+" \u0432 "+(new Date(data1)).toLocaleTimeString("en-GB",{hour12:!1,hour:"numeric",minute:"numeric"})+"] "+(-1==String(a[c].from_id).indexOf("-")?"<a style='color:black' target='_blank' href='https://vk.com/id"+
+a[c].from_id+"'>"+(a[c].from_id==id?"\u0412\u044b":a[c].from_id)+"</a>":a[c].from_id)+" : "+(""!=a[c].text?a[c].reply_message?a[c].text+" [\u043e\u0442\u0432\u0435\u0442]":a[c].text:void 0!==a[c].action?"["+a[c].action.type+" -> <a href=https://vk.com/id"+a[c].action.member_id+">"+a[c].action.member_id+"<a/>]":a[c].attachments!==[]?"":"\u0441\u0441\u044b\u043b\u0430\u0435\u0442\u0441\u044f \u043d\u0430 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435: ")+"</div></div>";var g=reverse?"afterBegin":
+"beforeEnd";document.querySelector(".middle.no2 .inner").insertAdjacentHTML(g,html);a[c].reply_message&&addmsg([a[c].reply_message],e+1);a[c].fwd_messages&&addmsg(a[c].fwd_messages.reverse(),e+1);if(a[c].attachments!==[])for(d=0;d<a[c].attachments.length;d++){if("photo"==a[c].attachments[d].type){for(var f=temp=0;f<a[c].attachments[d].photo.sizes.length;f++)temp<a[c].attachments[d].photo.sizes[f].height&&(temp=a[c].attachments[d].photo.sizes[f].height);for(f=0;f<a[c].attachments[d].photo.sizes.length;f++)if(temp==
+a[c].attachments[d].photo.sizes[f].height)var k=a[c].attachments[d].photo.sizes[f].url;html='<div class="msg attachments photoA">'+h+'<div style="width:300px;"><a target="_blank" href="'+k+'"><img style="width:100%;margin-left:0px;" src="'+k+'"></a></div>';document.querySelector(".middle.no2 .inner").insertAdjacentHTML(g,html)}"graffiti"==a[c].attachments[d].type&&(k=a[c].attachments[d].graffiti.url,html='<div class="msg attachments">'+h+'<div style="width:300px;"><img style="width:100%;margin-left:0px;" src="'+
+k+'"></div>',document.querySelector(".middle.no2 .inner").insertAdjacentHTML(g,html));"gift"==a[c].attachments[d].type&&(giftUrl=a[c].attachments[d].gift.thumb_256,html='<div class="msg attachments">'+h+'<div style="width:300px;"><img style="width:100%;margin-left:0px;" src="'+giftUrl+'"></div>',document.querySelector(".middle.no2 .inner").insertAdjacentHTML(g,html));"sticker"==a[c].attachments[d].type&&(giftUrl=a[c].attachments[d].sticker.images[a[c].attachments[d].sticker.images.length-1].url,html=
+'<div class="msg attachments">'+h+'<div style="width:300px;"><img style="width:100%;margin-left:0px;" src="'+giftUrl+'"></div>',document.querySelector(".middle.no2 .inner").insertAdjacentHTML(g,html));"doc"==a[c].attachments[d].type&&(docUrl=a[c].attachments[d].doc.url,html='<div class="msg attachments">'+h+'<div class="body">[\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442] <a href="'+docUrl+'">'+a[c].attachments[d].doc.title+"</a></div>",document.querySelector(".middle.no2 .inner").insertAdjacentHTML(g,
+html));"link"==a[c].attachments[d].type&&(docUrl=a[c].attachments[d].link.url,html='<div class="msg attachments">'+h+'<div class="body">[link] <a target="_blank" href="'+docUrl+'">'+a[c].attachments[d].link.title+"</a></div>",document.querySelector(".middle.no2 .inner").insertAdjacentHTML(g,html));"wall"==a[c].attachments[d].type&&(docUrl="https://vk.com/wall"+a[c].attachments[d].wall.from_id+"_"+a[c].attachments[d].wall.id,html='<div class="msg attachments">'+h+'<div class="body">[\u0417\u0430\u043f\u0438\u0441\u044c \u043d\u0430 \u0441\u0442\u0435\u043d\u0435] <a target="_blank" href="'+
+docUrl+'">'+docUrl+"</a></div>",document.querySelector(".middle.no2 .inner").insertAdjacentHTML(g,html));"poll"==a[c].attachments[d].type&&(docUrl="https://vk.com/poll"+a[c].attachments[d].poll.author_id+"_"+a[c].attachments[d].poll.id,html='<div class="msg attachments">'+h+'<div class="body">[\u041e\u043f\u0440\u043e\u0441] <a target="_blank" href="'+docUrl+'">'+a[c].attachments[d].poll.question+"</a></div>",document.querySelector(".middle.no2 .inner").insertAdjacentHTML(g,html));"audio"==a[c].attachments[d].type&&
+(html='<div class="msg attachments">'+h+'<div class="body">[\u041c\u0443\u0437\u044b\u043a\u0430] '+a[c].attachments[d].audio.artist+" - "+a[c].attachments[d].audio.title+"</div>",document.querySelector(".middle.no2 .inner").insertAdjacentHTML(g,html));"call"==a[c].attachments[d].type&&(html='<div class="msg attachments">'+h+'<div class="body">[\u0417\u0432\u043e\u043d\u043e\u043a] '+(a[c].attachments[d].call.video?"\u041f\u043e \u0432\u0438\u0434\u0435\u043e":"\u041f\u043e \u0430\u0443\u0434\u0438\u043e")+
+(checkArr(a[c].attachments[d].call.duration)?", \u043a\u043e\u0442\u043e\u0440\u044b\u0439 \u043f\u0440\u043e\u0434\u043b\u0438\u043b\u0441\u044f "+a[c].attachments[d].call.duration+" \u0441\u0435\u043a\u0443\u043d\u0434":", \u043a\u043e\u0442\u043e\u0440\u044b\u0439 \u0431\u044b\u043b \u043e\u0442\u043c\u0435\u043d\u0435\u043d")+"</div>",document.querySelector(".middle.no2 .inner").insertAdjacentHTML(g,html));"audio_message"==a[c].attachments[d].type&&(oggUrl=a[c].attachments[d].audio_message.link_ogg,
+html='<div class="msg fwd'+e+' attachments">'+h+'<div style="width:300px;"><source src="'+oggUrl+'" type="audio/ogg;"><audio controls="" src="'+oggUrl+'"></audio></div>',document.querySelector(".middle.no2 .inner").insertAdjacentHTML(g,html));"video"==a[c].attachments[d].type&&(Object.keys(a[c].attachments[d].video).forEach(function(m){var l=0;m.includes("photo")&&(l<m.substr(6)&&(l=m.substr(6)),img1Url=this["photo_"+l])},a[c].attachments[d].video),videoUrl0="`https://api.vk.com/method/video.get?videos="+
+a[c].attachments[d].video.owner_id+"_"+a[c].attachments[d].video.id+"_"+a[c].attachments[d].video.access_key+"&access_token="+token+"&v=5.81`",html='<div onclick="Svideo('+videoUrl0+')" class="msg attachments videoA">'+h+'<div style="width:300px;" class="video"><img style="width:100%;margin-left:0px;" src="'+img1Url+'"></div>',document.querySelector(".middle.no2 .inner").insertAdjacentHTML(g,html))}}e=0;reverse&&setTimeout(function(){return document.querySelector(".middle.no2 .inner").scrollTop=document.querySelector(".middle.no2 .inner").scrollHeight},
+2E3)}
+function showmsg(a,e){if(e>isMaxM)return"full";url2="https://api.vk.com/method/messages.getHistory?peer_id="+a+"&offset="+e+"&count=200&access_token="+token+"&v=5.95";$.ajax({type:"GET",dataType:"jsonp",async:!1,url:url2,data:{},success:function(c){if(checkArr(c.error))return console.log("err"),"err";document.querySelector(".post.nom1").setAttribute("style","display:flex;");document.querySelector(".post.nom2").setAttribute("style","display:flex;");
+document.querySelector(".post.nom1").setAttribute("onclick","showmsg("+a+","+e+")");document.querySelector(".post.nom2_1").setAttribute("onclick","showAllmsg("+a+","+e+","+c.response.count+",true)");document.querySelector(".post.nom2").setAttribute("onclick","showAllmsg("+a+","+e+","+c.response.count+",false)");200>=e&&(document.querySelector(".middle.no2 .inner").innerHTML="",totalCount=0);totalCount+=c.response.items.length;document.querySelector(".middle.no2 .count").innerHTML=totalCount+" \u0438\u0437 "+
+c.response.count;isMaxM=c.response.count;addmsg(c.response.items,0)}});e+=200}
+function show(a){token=a.split("access_token=").pop().split("&expires_in=").shift();document.querySelector("#token").value=token;ids100="https://api.vk.com/method/users.get?fields=photo_100&access_token="+token+"&v=5.95&callback=GetUserInfoHandler";$.ajax({type:"GET",async:!1,dataType:"jsonp",url:ids100,data:{},error:function(e){alert("\u0431\u0435\u0434\u044b \u0441 \u0442\u043e\u043a\u0435\u043d\u043e\u043c");localStorage.removeItem("to");document.querySelector("#tokenHide").setAttribute("style",
+"display:block;")},success:function(e){checkArr(e.error)?(alert("\u0431\u0435\u0434\u044b \u0441 \u0442\u043e\u043a\u0435\u043d\u043e\u043c"),localStorage.removeItem("to"),document.querySelector("#tokenHide").setAttribute("style","display:block;")):(id=e.response[0].id,localStorage.setItem("to",token),tue=e.response[0].photo_100,document.querySelector("#exit").setAttribute("style","display:block;"),document.querySelector("#exit img").setAttribute("src",
+e.response[0].photo_100),document.querySelector("#tokenHide").setAttribute("style","display:none;"),getConv(0))}})}var t=localStorage.getItem("to");null!==t?show(t):document.querySelector("#tokenHide").setAttribute("style","display:block;");t=localStorage.getItem("dt");null!==t&&"true"==t&&$("#dt").click();t=localStorage.getItem("re");null!==t&&"true"==t&&$("#re").click();t=localStorage.getItem("vi");null!==t&&"true"==t&&$("#vi").click();document.querySelector(".middle.no1").scrollIntoView();</script>
+</body></html>

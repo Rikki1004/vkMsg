@@ -1,5 +1,4 @@
 <h1 style="text-align: center;font-weight: bold;">vkMsg</h1>
-<br>
 Описание
 <br>
 Читалка сообщений по токену, реализованная с нуля.
